@@ -1,0 +1,114 @@
+
+## Syllabus
+
+- search: informed, uninformed
+- adversarial
+- logic
+- propositional
+- predicate
+- reasoning under uncertainty topics - conditional independence representation
+- exact inference through variable elimination
+- approximate inference through sampling
+
+### AI definition
+
+> "It is a branch of computer science by which we can create intelligent machines which can behave like a human, think like humans, and able to make decisions.”
+> 
+
+## Search: Informed and uninformed
+
+- search techniques are universal problem solving methods, rational agents or problem solving agents.
+
+properties of search algorithms:
+
+- completeness: it should guarantee to return a solution if at least any solution exists for any random input
+- optimal: guaranteed to be the best solution(lowest path cost) among all other solutions.
+- minimal space and time complexity
+
+Uninformed/Blind Search
+
+- BFS
+- DFS
+- Uniform cost search
+
+Informed Search
+
+- Best first search
+- A* search
+
+### Uninformed Search
+
+- does not contain any domain knowledge such as closeness, the location of goal
+- operates in brute force way
+- examines each node of the tree until it achieves the goal node
+
+### Informed search / Heuristic search
+
+- algorithm uses domain knowledge
+- problem information is available which can guide the search
+- finds solution more efficiently than an uninformed search strategy
+
+## Uninformed
+
+### Breadth first search
+
+- traverses a tree or graph
+- searches breadth wise in a tree or graph
+- starts searching from the root, expands all successor node at the current level before moving to next
+- uses QUEUE
+
+$O(V^2$) when adjacency matrix and O(V+E) at adjacency list
+
+### Depth first search
+
+- uses STACK
+- starts from root node and follows each path to its greatest depth node before moving to the next path
+
+$O(V^2$) when adjacency matrix and O(V+E) at adjacency list
+
+### Uniform cost search
+
+- used for weighted tree
+- goal is to find a path to a goal node with lowest cumulative path - optimal
+- node expansion is based on path cost
+- USES priority queue
+- high priority to minimum cost
+- uses backtracking
+- takes minimum cost to go to start to end node
+
+## Informed
+
+### Best First Search
+
+$O(n  *log n)$
+
+- using priority queue
+- OPEN, CLOSED - two priority queue
+- priority queue based on their heuristic value
+
+g(n) : path distance
+
+h(n) : estimate to goal
+
+f(n) : combined huersitics g(n) + f(n)
+
+> 
+> 
+> 1. Create 2 empty lists: OPEN and CLOSED
+> 2. Start from the initial node (say N) and put it in the ‘ordered’ OPEN list
+> 3. Repeat the next steps until the GOAL node is reached
+>     1. If the OPEN list is empty, then EXIT the loop returning ‘False’
+>     2. Select the top node N in OPEN list and move it to the CLOSED list
+>     3. If N is a GOAL node, then move the node to the Closed list and exit the loop returning ‘True’. The solution can be found by backtracking the path
+>     4. If N is not the GOAL node, expand node N to generate the neighbour nodes linked to node N and add all those to the OPEN list
+>     5. Reorder the nodes in the OPEN list in ascending order according to an evaluation function f(n)
+
+### A* search (admissible guarantee for optimal solution)
+
+$f(N) = g(N) + h(N)$
+
+g(N) : actual cost from start node to N
+
+h(n) : estimated cost from N to GOAL node
+
+step by step choosing the minimum value for combined heuristic
